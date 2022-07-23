@@ -1,107 +1,116 @@
-console.log("Hello World");
+//console.log("Hello World"); // Message that only appears in console
+
+const playerScoreContainer = document.getElementById('player-score');
+const computerScoreContainer = document.getElementById('cpu-score');
+const playerSelectContainer = document.getElementById('player-choice');
+const computerSelectContainer = document.getElementById('cpu-choice');
+const results = document.getElementById('results');
+const modal = document.getElementById('modal');
+const winResults = document.getElementById('winner');
+
+let p1Score = 0;
+let cpuScore = 0;
+
+playerScoreContainer.innerHTML = p1Score;
+computerScoreContainer.innerHTML = cpuScore;
 
 function getComputerChoice()
 {
   let game = ["Rock", "Paper", "Scissors"];
   let randomItem = game[Math.floor(Math.random() * game.length)];
-  console.log("Showing the random computer choice generated");
-  console.log(randomItem);
+  console.log("Showing the random computer choice generated: " + randomItem);
   return randomItem;
 }
 
-function playRound(playerSelection, computerSelection)
+function capitalizeFirstLetter(string)
 {
-  if ( playerSelection.toLowerCase() === "rock" && computerSelection.toLowerCase() === "paper")
-  {
-    return "Loser";
-  }
-
-  else if (playerSelection.toLowerCase() ==="rock" && computerSelection.toLowerCase() === "scissors")
-  {
-    return "Winner";
-  }
-  
-  else if (playerSelection.toUpperCase() === "PAPER" && computerSelection.toLowerCase() === "rock")
-  {
-    return "Winner";
-  }
-
-  else if (playerSelection.toUpperCase() === "PAPER" && computerSelection.toLowerCase() === "scissors")
-  {
-    return "Loser";
-  }
-
-  else if (playerSelection.toLowerCase() === "scissors" && computerSelection.toLowerCase() === "rock")
-  {
-    return "Loser";
-  }
-
-  else if (playerSelection.toLowerCase() === "scissors" && computerSelection.toLowerCase() === "paper")
-  {
-    return "Winner";
-  }  
-
-  return 0;
+  return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
-function game() 
+function playRound(playerSelection)
 {
-  let p1score = 0;
-  let p2score = 0;
-  let message = "Choose one: Rock, Paper or Scissors";
-  console.log("Beggining our 5 round game");
-  for (let i = 0; i < 5; i++)
-  {
-    let userChoice = prompt(message);
-    let compSelect = getComputerChoice();
+    computerSelection = getComputerChoice();
+    playerSelection = playerSelection.toString();
+    console.log("Showing the button selected: " + playerSelection);
+    computerSelection = computerSelection.toString();
+    playerSelectContainer.innerHTML = capitalizeFirstLetter(playerSelection);
+    computerSelectContainer.innerHTML = capitalizeFirstLetter(computerSelection);
 
-    if (userChoice.toLowerCase() === compSelect.toLowerCase())
+    if ( playerSelection.toLowerCase() === "rock" && computerSelection.toLowerCase() === "paper")
     {
-      i --;
-      console.log("Unlucky, you both chose the same hehe");
+      cpuScore ++;
+      
     }
 
-    else 
+    else if (playerSelection.toLowerCase() ==="rock" && computerSelection.toLowerCase() === "scissors")
     {
-      let result =  playRound(userChoice, compSelect);
-      result = result.toString();
-
-    
-      if (result.toLowerCase() === "winner")
-      {
-        p1score++;
-        console.log("You won");
-      }
-      else 
-      {
-        p2score++;
-        console.log("You lost");
-      }
+      p1Score ++;
+      
     }
     
-  }
-  
-  if ( p1score > p2score )
-  {
-    console.log("It was a win");    
-  }
-  else
-  {
-    console.log("It was a lose");
-  }
-  
+    else if (playerSelection.toUpperCase() === "PAPER" && computerSelection.toLowerCase() === "rock")
+    {
+      p1Score ++;
+      
+    }
+
+    else if (playerSelection.toUpperCase() === "PAPER" && computerSelection.toLowerCase() === "scissors")
+    {
+      cpuScore ++;
+      
+    }
+
+    else if (playerSelection.toLowerCase() === "scissors" && computerSelection.toLowerCase() === "rock")
+    {
+      cpuScore ++;
+      
+    }
+
+    else if (playerSelection.toLowerCase() === "scissors" && computerSelection.toLowerCase() === "paper")
+    {
+      p1Score ++;      
+    }  
+
+    else {
+      console.log("Showing its a tie");      
+    }
+    playerScoreContainer.innerHTML = p1Score;
+    computerScoreContainer.innerHTML = cpuScore;
+    if (p1Score === 5) 
+    {
+      winResults.innerHTML = 'Well, who else could it be?';
+    }
+
+    else if (cpuScore === 5) 
+    {
+      winResults.innerHTML = 'Clearly, not you';
+    }  
+
 }
 
-const greeting="Hello, welcome to the game Rock, Paper Scissors";
+//Styling using JS in order to practice.
 
-console.log(greeting);
+const buttons = document.querySelector("div");
 
-const playerSelection = "rock";
-const computerSelection = getComputerChoice();
 
-game(); 
+const b1 = document.querySelector(".rock-btn");
+b1.style.fontSize = '50px';
+b1.style.backgroundColor = 'red';
 
-console.log(playRound(playerSelection, computerSelection));
+const b2 = document.querySelector(".paper-btn");
+b2.style.fontSize = '50px';
+
+const b3 = document.querySelector(".scissors-btn"); 
+b3.style.fontSize = '50px';
+b3.style.backgroundColor = 'red';
+
+
+
+//document.getElementById("bt1").addEventListener("click", playRound("rock", getComputerChoice));
+
+
+
+//document.getElementById("div").addEventListener("click", playRound);
 
 
 /* let confirm = "yes";
@@ -113,7 +122,7 @@ do
     console.log("Its a Rock boy");
   }
 
-  if (getComputerChoice() ==="Paper")
+  if (getComputerChoice() === "Paper")
   {
     console.log("It's Paper boy");
   }

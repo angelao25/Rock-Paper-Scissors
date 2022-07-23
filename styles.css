@@ -1,0 +1,37 @@
+div {
+    font-size: '50px';
+    box-sizing:'20px';
+    background-color: 'black';
+    color: 'white';
+    justify-items: 'flex-start';
+    display: 'flex';
+    margin-top: '444px';
+    padding: '18px 28px';
+    border-radius: '44px';
+    font-weight: 'bold';
+    margin: '4px 2px';
+    cursor: 'pointer';
+    text-align: 'center';
+    text-decoration: 'none';
+    display: 'inline-block';
+}
+
+body {
+    background-color: black;
+}
+
+.dsp-container {
+    background-color: gray;
+}
+
+h1 {
+    color: brown;
+}
+
+.dsp-container.choice {
+    background-color: greenyellow;
+}
+
+.dsp-container.results {
+    background-color: blue;
+}

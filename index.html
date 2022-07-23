@@ -1,9 +1,51 @@
 <!DOCTYPE html>
 
 <head>
-  <script src="myscripts.js"></script>
+  <script src="myscripts.js" defer></script>
+  <link rel="stylesheet" href="styles.css">
+  <title>Rock Paper Scissors Game</title>
 </head>
 
 <body>
-  <h1>Our democracy has been hacked. </h1>
+  <h1>    
+    Our democracy has been hacked.   
+  </h1>
+  <div id="choice">   
+
+    <button class="rock-btn" onclick="playRound('rock')" >Rock</button> 
+    <button class="paper-btn" onclick="playRound('paper')" >Paper</button>
+    <button class="scissors-btn" onclick="playRound('scissors')" >Scissors</button>
+
+  </div>
+  <div class="dsp-container"> <!-- This is a div for displaying results and change my logs into DOM methods--> 
+    <div class="dsp-container choice">
+      <h1> Displaying the current choice</h1>
+      <div>
+        <h2>Player Choose: </h2>
+        <p id="player-choice"></p>
+      </div>
+      <div>
+        <h2>CPU Random Selection: </h2>
+        <p id="cpu-choice"></p>
+      </div>
+    </div>
+
+    <div class="dsp-container results">
+      <h1> Displaying results in the web page</h1>
+      <div>
+        <h2>Player Score:</h2>
+        <p id="player-score"></p>
+      </div>
+      <div>
+        <h2>Computer Score:</h2>
+        <p id="cpu-score"></p>
+      </div>
+    </div>
+    <div class="dsp-container winner">
+      <h1> And the winner is: </h1>
+      <div>
+        <p id="winner"></p>
+      </div>
+    </div>
+  </div>  
 </body>
